@@ -30,7 +30,7 @@ guessButton.addEventListener("click", function (e){
    if (goodGuess) {
       makeGuess(goodGuess);
   }
-  letterInput.value = "";
+  playersLetters.value = "";
 });
 
 
@@ -48,6 +48,8 @@ const validateInput = function(input){
 };
 
 const makeGuess = function (guess){
+  guess = guess.toUpperCase();
+   
    if(guessedLetters.includes(guess)){
       messageToPlayer.innerText = " You already guessed that letter, try again!";
    } else {
@@ -56,7 +58,7 @@ const makeGuess = function (guess){
       showGuessedLetters();
       updateWordInProgress(guessedLetters);
    }
-
+ console.log()
 };
 
 const showGuessedLetters = function(){
@@ -89,7 +91,7 @@ const updateWordInProgress = function(guessedLetters) {
   
   const checkIfWin = function () {
     if (word.toUpperCase() === wordInProgress.innerText) {
-      message.classList.add("win");
-      message.innerHTML = `<p class="highlight">You guessed the correct word! Congrats!</p>`;
+      messageToPlayer.classList.add("win");
+      messageToPlayer.innerHTML = `<p class="highlight">You guessed the correct word! Congrats!</p>`;
     }
   };
